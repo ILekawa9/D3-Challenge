@@ -54,6 +54,34 @@ chartGroup.selectAll("circle")
 .attr("cy", d=>yScale(d.smokes))
 .attr("r", "10")
 .attr("stroke-width", "1")
+.classed("stateCircle", true)
+.attr("opacity", 0.75);
 
+chartGroup.append("g")
+    .selectAll('text')
+    .data(CensusData)
+    .enter()
+    .append("text")
+    .text(d=>d.abbr)
+    .attr("x", d=>xScale(d.age))
+    .attr("y", d=>yScale(d=>d.smokes))
+    .classed(".stateText", true)
+    .attr("font_family", "sans-serif")
+    .attr("text-anchor", "middle")
+    .attr("fill", "white")
+    .attr("font-size", "10px")
+    .style("font-weight", "bold")
+    .attr("alignment-baseline", "central");
 
+    chartGroup.append("text")
+        .attr("y", 0 - ((margin.left / 2) + 2))
+        .attr("x", 0 - (height / 2))
+        .attr("text-anchor", "middle")
+        .attr("font-size", "16px")
+        .attr("fill", "black")
+        .style("font-weight", "bold")
+        .attr("transform", "rotate(-90)")
+        .text("Smokers (%)");
+}).catch(function(error) {
+  console.log(error);   
 });
