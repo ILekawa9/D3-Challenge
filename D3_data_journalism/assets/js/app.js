@@ -26,7 +26,7 @@ d3.csv("assets/data/data.csv").then(function(CensusData) {
     CensusData.forEach(Function(data) {
         data.age = +data.age;
         data.smokes = +data.smokes;
-        console.log(data)    
+        //console.log(data);   
     });
 
     const xScale = d3.scaleLinear()
